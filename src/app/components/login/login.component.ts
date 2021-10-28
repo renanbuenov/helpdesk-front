@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Credentials } from 'src/app/models/credentials';
 
 @Component({
@@ -18,9 +19,14 @@ export class LoginComponent implements OnInit {
   password = new FormControl(null, Validators.minLength(3));
   
 
-  constructor() { }
+  constructor(private toast: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+  logon() {
+    this.toast.error('Username and/or password invalid!', 'Login');
+    this.creds.password = '';
   }
 
   validateField(): boolean {
