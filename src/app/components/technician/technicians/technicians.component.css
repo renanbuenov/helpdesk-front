@@ -12,4 +12,12 @@ h1 {
     text-align: center;
 }
 
+.edit {
+    color: rgb(60, 60, 204);
+}
+
+.delete {
+    color: rgb(233, 53, 53);
+}
+
   
