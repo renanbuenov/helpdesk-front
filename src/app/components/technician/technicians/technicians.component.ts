@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Technician } from 'src/app/models/technicians';
+import { TechnicianService } from 'src/app/services/technician.service';
 
 @Component({
   selector: 'app-technicians',
@@ -10,30 +11,32 @@ import { Technician } from 'src/app/models/technicians';
 })
 export class TechniciansComponent implements OnInit {
 
-  ELEMENT_DATA: Technician[] = [
-    {
-      id: 1,
-      name:  'Renan Bueno',
-      cpf: '086.879.969-69',
-      email: 'renan@hotmail.com',
-      password: '123',
-      profiles: ['0'],
-      dateCreation: '26/10/2021'
-    }
-  ]
+  ELEMENT_DATA: Technician[] = []
   
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
   dataSource = new MatTableDataSource<Technician>(this.ELEMENT_DATA);
-
-  constructor() { }
-  
-  ngOnInit(): void {
-  }
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  constructor(
+    private service: TechnicianService
+  ) { }
+  
+  ngOnInit(): void {
+    this.findAll();
+  }
+  
+  findAll() {
+    this.service.findAll().subscribe(answer => {
+      this.ELEMENT_DATA = answer
+      this.dataSource = new MatTableDataSource<Technician>(answer);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
+
