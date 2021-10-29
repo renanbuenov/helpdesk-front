@@ -1,1 +1,84 @@
-<p>ticket-read works!</p>
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Viewing Ticket</h1>
+    <img class="full-width" src="assets/img/ticket-create.svg" alt="Ticket image">
+
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Ticket Title</mat-label>
+          <input
+          [disabled]="true"
+          [(ngModel)]="ticket.title"
+          name="title"
+          matInput 
+          placeholder="Ex. Switch notebook battery">
+        </mat-form-field>
+      </form>
+      
+      <div class="status-priority">
+        <mat-form-field appearance="outline">
+            <mat-label>STATUS ({{ returnStatus(ticket.status) }})</mat-label>
+            <mat-select 
+            [disabled]="true"
+            [(ngModel)]="ticket.status"
+            name="status">
+              <mat-option value="0">OPENED</mat-option>
+              <mat-option value="1">IN PROGRESS</mat-option>
+              <mat-option value="2">CLOSED</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>PRIORITY ({{ returnPriority(ticket.priority) }})</mat-label>
+            <mat-select  
+            [disabled]="true"
+            [(ngModel)]="ticket.priority"
+            name="priority">
+              <mat-option value="0">LOW</mat-option>
+              <mat-option value="1">AVERAGE</mat-option>
+              <mat-option value="2">HIGH</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div class="technician">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>TECHNICIAN ({{ ticket.nameTechnician }})</mat-label>
+            <mat-select 
+            [disabled]="true"
+            [(ngModel)]="ticket.technician"
+            name="technician">
+              <mat-option>{{ ticket.nameTechnician }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div class="client">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>CLIENT ({{ ticket.nameClient }})</mat-label>
+            <mat-select 
+            [disabled]="true"
+            [(ngModel)]="ticket.client"
+            name="client">
+              <mat-option>{{ ticket.nameClient }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea 
+          [disabled]="true"
+          [(ngModel)]="ticket.observation"
+          name="observation"
+          class="observation" 
+          matInput 
+          ></textarea>
+        </mat-form-field>
+      </form>
+
+      <button routerLink="../../" class="full-width mat-elevation-z4" mat-stroked-button color="warn">Return</button>
+
+      <p class="full-width" >Developed by Renan Bueno</p>
+      
+</div>
