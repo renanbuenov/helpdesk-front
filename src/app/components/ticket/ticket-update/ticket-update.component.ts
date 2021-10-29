@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from 'src/app/models/client';
 import { Technician } from 'src/app/models/technician';
@@ -43,16 +43,27 @@ export class TicketUpdateComponent implements OnInit {
     private technicianService: TechnicianService,
     private toastService:      ToastrService,
     private router:            Router,
+    private route:             ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.ticket.id = this.route.snapshot.paramMap.get('id');
+    this.findById();
     this.findAllClients();
     this.findAllTechnicians();
   }
 
-  create(): void {
-    this.ticketService.create(this.ticket).subscribe(answer => {
-      this.toastService.success('Ticket created successfully', 'New ticket');
+  findById(): void {
+    this.ticketService.findById(this.ticket.id).subscribe(answer => {
+      this.ticket = answer;
+    }, ex => {
+      this.toastService.error(ex.error.error);
+    })
+  }  
+
+  update(): void {
+    this.ticketService.update(this.ticket).subscribe(answer => {
+      this.toastService.success('Ticket updated successfully', 'Updated ticket');
       this.router.navigate(['tickets']);
     }, ex => {
       console.log(ex)
@@ -77,6 +88,26 @@ export class TicketUpdateComponent implements OnInit {
     return this.priority.valid && this.status.valid &&
            this.title.valid && this.observation.valid &&
            this.technician.valid && this.client.valid
+  }
+
+  returnStatus(status: any): string {
+    if(status == '0') {
+      return 'OPENED'
+    } else if(status == '1') {
+      return 'IN PROGRESS'
+    } else {
+      return 'CLOSED'
+    }
+  }
+
+  returnPriority(priority: any): string {
+    if(status == '0') {
+      return 'LOW'
+    } else if(status == '1') {
+      return 'AVERAGE'
+    } else {
+      return 'HIGH'
+    }
   }
 
 }
