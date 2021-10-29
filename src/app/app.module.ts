@@ -44,6 +44,7 @@ import { ClientCreateComponent } from './components/client/client-create/client-
 import { ClientUpdateComponent } from './components/client/client-update/client-update.component';
 import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
+import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-create.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { TicketListComponent } from './components/ticket/ticket-list/ticket-list
     ClientCreateComponent,
     ClientUpdateComponent,
     ClientDeleteComponent,
-    TicketListComponent
+    TicketListComponent,
+    TicketCreateComponent
   ],
   imports: [
     BrowserModule,
