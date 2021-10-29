@@ -14,6 +14,7 @@ import { ClientCreateComponent } from './components/client/client-create/client-
 import { ClientListComponent } from './components/client/client-list/client-list.component';
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-create.component';
+import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-update.component';
 
 const routes: Routes = [
 
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: 'clients/delete/:id',     component: ClientDeleteComponent },
 
       { path: 'tickets',                component: TicketListComponent},
-      { path: 'tickets/create',         component: TicketCreateComponent}
+      { path: 'tickets/create',         component: TicketCreateComponent},
+      { path: 'tickets/update/:id',     component: TicketUpdateComponent}
     ]
   }
 ];
