@@ -1,1 +1,58 @@
-<p>technician-delete works!</p>
+<div class="container mat-elevation-z8">
+    <form class="form">
+
+        <h1 class="fullWidth">Delete Technician</h1>
+        <img class="fullWidth" src="assets/img/technician-create.svg" alt="Help Desk - Renan Bueno">
+
+        <section class="section">
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Client</mat-checkbox>
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Technician</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Name</mat-label>
+            <input 
+            [(ngModel)]="technician.name"
+            name="name"
+            [disabled]="true"
+            matInput>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>CPF</mat-label>
+            <input 
+            [(ngModel)]="technician.cpf"
+            name="cpf"
+            [disabled]="true"
+            matInput>     
+            <mat-icon matSuffix>pin</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>E-mail</mat-label>
+            <input 
+            [(ngModel)]="technician.email"
+            name="email"
+            [disabled]="true"
+            matInput>
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Password</mat-label>
+            <input 
+            [(ngModel)]="technician.password"
+            name="password"
+            [disabled]="true"
+            matInput>
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <button (click)="delete()" class="fullWidth mat-elevation-z5" mat-flat-button color="primary">Delete</button>
+        <button routerLink="../../" class="fullWidth mat-elevation-z5" mat-flat-button color="warn">Cancel</button>
+    </form>
+
+    <p>By Renan Bueno</p>
+</div>

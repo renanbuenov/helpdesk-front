@@ -26,4 +26,8 @@ export class TechnicianService {
   update(technician: Technician): Observable<Technician> {
     return this.http.put<Technician>(`${API_CONFIG.baseUrl}/technicians/${technician.id}`,technician);
   }
+
+  delete(id: any): Observable<Technician> {
+    return this.http.delete<Technician>(`${API_CONFIG.baseUrl}/technicians/${id}`);
+  }
 }
