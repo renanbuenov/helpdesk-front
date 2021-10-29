@@ -1,0 +1,23 @@
+.container {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+table {
+    width: 100%;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.edit {
+    color: rgb(60, 60, 204);
+}
+
+.delete {
+    color: rgb(233, 53, 53);
+}
+
+  

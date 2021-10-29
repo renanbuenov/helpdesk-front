@@ -1,57 +1,67 @@
 <div class="container mat-elevation-z8">
     <form class="form">
 
-        <h1 class="fullWidth">Delete Technician</h1>
+        <h1 class="fullWidth">Update Client</h1>
         <img class="fullWidth" src="assets/img/technician-create.svg" alt="Help Desk - Renan Bueno">
 
         <section class="section">
-            <mat-checkbox [disabled]="true" class="margin" color="primary">Admin</mat-checkbox>
-            <mat-checkbox [disabled]="true" class="margin" color="primary">Client</mat-checkbox>
-            <mat-checkbox [disabled]="true" class="margin" color="primary">Technician</mat-checkbox>
+            <mat-checkbox (click)="addProfile(0)" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox (click)="addProfile(1)" [checked]="true" class="margin" color="primary">Client</mat-checkbox>
+            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Client</mat-checkbox>
         </section>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Name</mat-label>
             <input 
-            [(ngModel)]="technician.name"
+            [(ngModel)]="client.name"
             name="name"
-            [disabled]="true"
-            matInput>
+            [formControl]="name"
+            required
+            matInput 
+            placeholder="Ex: fulano de tal"
+            maxlength="50">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>CPF</mat-label>
             <input 
-            [(ngModel)]="technician.cpf"
+            [(ngModel)]="client.cpf"
             name="cpf"
-            [disabled]="true"
-            matInput>     
+            [formControl]="cpf"
+            required
+            matInput 
+            placeholder="Ex: 000.000.000-00"
+            mask="000.000.000-00">
+            
             <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>E-mail</mat-label>
             <input 
-            [(ngModel)]="technician.email"
+            [(ngModel)]="client.email"
             name="email"
-            [disabled]="true"
-            matInput>
+            [formControl]="email"
+            required
+            matInput 
+            placeholder="Ex: fulano@mail.com">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Password</mat-label>
             <input 
-            [(ngModel)]="technician.password"
+            [(ngModel)]="client.password"
             name="password"
-            [disabled]="true"
-            matInput
-            type="password">
+            [formControl]="password"
+            required
+            matInput 
+            placeholder="Ex: fulano de tal">
             <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 
-        <button (click)="delete()" class="fullWidth mat-elevation-z5" mat-flat-button color="primary">Delete</button>
+        <button (click)="update()" [disabled]="!validateField()" class="fullWidth mat-elevation-z5" mat-flat-button color="primary">Update</button>
         <button routerLink="../../" class="fullWidth mat-elevation-z5" mat-flat-button color="warn">Cancel</button>
     </form>
 

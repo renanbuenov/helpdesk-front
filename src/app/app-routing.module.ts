@@ -8,6 +8,10 @@ import { TechnicianCreateComponent } from './components/technician/technician-cr
 import { TechnicianUpdateComponent } from './components/technician/technician-update/technician-update.component';
 import { TechnicianListComponent } from './components/technician/technician-list/technician-list.component';
 import { TechnicianDeleteComponent } from './components/technician/technician-delete/technician-delete.component';
+import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
+import { ClientUpdateComponent } from './components/client/client-update/client-update.component';
+import { ClientCreateComponent } from './components/client/client-create/client-create.component';
+import { ClientListComponent } from './components/client/client-list/client-list.component';
 
 const routes: Routes = [
 
@@ -18,7 +22,12 @@ const routes: Routes = [
       { path: 'technicians', component: TechnicianListComponent },
       { path: 'technicians/create', component: TechnicianCreateComponent },
       { path: 'technicians/update/:id', component: TechnicianUpdateComponent },
-      { path: 'technicians/delete/:id', component: TechnicianDeleteComponent }
+      { path: 'technicians/delete/:id', component: TechnicianDeleteComponent },
+
+      { path: 'clients', component: ClientListComponent },
+      { path: 'clients/create', component: ClientCreateComponent },
+      { path: 'clients/update/:id', component: ClientUpdateComponent },
+      { path: 'clients/delete/:id', component: ClientDeleteComponent }
     ]
   }
 ];
