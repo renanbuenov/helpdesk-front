@@ -5,7 +5,11 @@
     <form class="form">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Ticket Title</mat-label>
-          <input matInput placeholder="Ex. Switch notebook battery">
+          <input
+          [formControl]="title"
+          required 
+          matInput 
+          placeholder="Ex. Switch notebook battery">
         </mat-form-field>
       
 
@@ -14,15 +18,16 @@
       <div class="status-priority">
         <mat-form-field appearance="outline">
             <mat-label>Select Status</mat-label>
-            <mat-select>
+            <mat-select [formControl]="status" required>
               <mat-option value="0">OPENED</mat-option>
               <mat-option value="1">IN PROGRESS</mat-option>
               <mat-option value="2">CLOSED</mat-option>
             </mat-select>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label>Select Priority</mat-label>
-            <mat-select>
+            <mat-select  [formControl]="priority" required>
               <mat-option value="0">LOW</mat-option>
               <mat-option value="1">AVERAGE</mat-option>
               <mat-option value="2">HIGH</mat-option>
@@ -33,7 +38,7 @@
       <div class="technician">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Select Technician</mat-label>
-            <mat-select>
+            <mat-select [formControl]="technician" required>
               <mat-option value="0">Renan</mat-option>
             </mat-select>
           </mat-form-field>
@@ -42,7 +47,7 @@
       <div class="client">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Select Client</mat-label>
-            <mat-select>
+            <mat-select [formControl]="client" required>
               <mat-option value="0">Karina</mat-option>
             </mat-select>
           </mat-form-field>
@@ -51,11 +56,16 @@
       <form class="form">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea class="description" matInput placeholder="Ex. Switch battery on a HP laptop at my desk"></textarea>
+          <textarea 
+          [formControl]="description"
+          required 
+          class="description" 
+          matInput 
+          placeholder="Ex. Switch battery on a HP laptop at my desk"></textarea>
         </mat-form-field>
       </form>
 
-      <button class="full-width mat-elevation-z4" mat-raised-button color="primary">Create</button>
+      <button [disabled]="!validateField()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Create</button>
       <button class="full-width mat-elevation-z4" mat-stroked-button color="warn">Cancel</button>
 
       <p class="full-width" >Developed by Renan Bueno</p>
