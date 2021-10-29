@@ -31,22 +31,24 @@ import { MatCardModule } from '@angular/material/card';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TechniciansComponent } from './components/technician/technicians/technicians.component';
+import { TechnicianListComponent } from './components/technician/technician-list/technician-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TechnicianCreateComponent } from './components/technician/technician-create/technician-create.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { TechnicianUpdateComponent } from './components/technician/technician-update/technician-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    HeaderComponent,
-    TechniciansComponent,
     LoginComponent,
-    TechnicianCreateComponent
+    HeaderComponent,
+    TechnicianListComponent,
+    TechnicianCreateComponent,
+    TechnicianUpdateComponent
   ],
   imports: [
     BrowserModule,

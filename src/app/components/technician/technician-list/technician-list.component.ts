@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Technician } from 'src/app/models/technicians';
+import { Technician } from 'src/app/models/technician';
 import { TechnicianService } from 'src/app/services/technician.service';
 
 @Component({
-  selector: 'app-technicians',
-  templateUrl: './technicians.component.html',
-  styleUrls: ['./technicians.component.css']
+  selector: 'app-technician-list',
+  templateUrl: './technician-list.component.html',
+  styleUrls: ['./technician-list.component.css']
 })
-export class TechniciansComponent implements OnInit {
+export class TechnicianListComponent implements OnInit {
 
   ELEMENT_DATA: Technician[] = []
   
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'cpf', 'email', 'actions'];
   dataSource = new MatTableDataSource<Technician>(this.ELEMENT_DATA);
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -28,7 +28,7 @@ export class TechniciansComponent implements OnInit {
   
   findAll() {
     this.service.findAll().subscribe(answer => {
-      this.ELEMENT_DATA = answer
+      this.ELEMENT_DATA = answer;
       this.dataSource = new MatTableDataSource<Technician>(answer);
       this.dataSource.paginator = this.paginator;
     })
